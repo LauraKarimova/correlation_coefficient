@@ -1,2 +1,43 @@
-,,,
-seg
+import csv
+
+array_AAPL = []
+File_CSV = open('aapl.csv')
+Data_CSV = csv.reader(File_CSV)
+for row in Data_CSV:
+    for now in row:
+        array_AAPL.append(now)
+        
+        
+array_MSFT = []
+File_CSV_1 = open('msft.csv')
+Data_CSV_1 = csv.reader(File_CSV_1)
+for row_ms in Data_CSV_1:
+    for now_ms in row_ms:
+        array_MSFT.append(now_ms)
+        
+array_AAL = []
+File_CSV_2 = open('aal.csv')
+Data_CSV_2 = csv.reader(File_CSV_2)
+for row_aal in Data_CSV_2:
+    for now_aal in row_aal:
+        array_AAL.append(now_aal)
+
+        
+#print(array_AAPL)
+array_AAPL_new = np.array(array_AAPL, dtype=np.float32)
+array_MSFT_new = np.array(array_MSFT, dtype=np.float32)
+array_AAL_new = np.array(array_AAL, dtype=np.float32)
+
+
+r = np.corrcoef(array_AAPL_new, array_AAL_new)
+r
+
+
+import scipy.stats
+
+# Pearson's r
+scipy.stats.pearsonr(array_AAPL_new, array_MSFT_new)
+
+
+# Spearman's rho
+scipy.stats.spearmanr(array_AAPL_new, array_MSFT_new)
