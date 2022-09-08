@@ -1,29 +1,20 @@
 # Algorithm for analyzing financial instruments based on correlation coefficient
-> Outline a brief description of your project.
+> A large amount of research is currently being done on the relationship between stocks in order to find a more accurate and efficient method for predicting the price of stocks.
+This work presents an algorithm that allows to find the relationship and its degree between two stocks based on historical data of the prices. Finding the degree of correlation between stocks will allow to build a model that predicts the price of a stock based on the historical data of another stock.
 
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [Setup](#setup)
-* [Contact](#contac)
+* [Contact](#contact)
 
 ## General Information
 - Provide general information about your project here.
 - What problem does it (intend to) solve?
 - What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
-
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
-
-## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+- Python - version 3.8
+- Anaconda - version 2020.11
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [@LauraKarimova](33099@iitu.edu.kz) - feel free to contact me!
