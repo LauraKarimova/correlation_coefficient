@@ -1,3 +1,5 @@
+##NumPy Correlation Calculation##
+
 import csv
 
 array_AAPL = []
@@ -28,16 +30,45 @@ array_AAPL_new = np.array(array_AAPL, dtype=np.float32)
 array_MSFT_new = np.array(array_MSFT, dtype=np.float32)
 array_AAL_new = np.array(array_AAL, dtype=np.float32)
 
-
 r = np.corrcoef(array_AAPL_new, array_AAL_new)
 r
 
-
+##SciPy Correlation Calculation##
 import scipy.stats
 
 # Pearson's r
 scipy.stats.pearsonr(array_AAPL_new, array_MSFT_new)
 
-
 # Spearman's rho
 scipy.stats.spearmanr(array_AAPL_new, array_MSFT_new)
+
+# Kendall's tau
+scipy.stats.kendalltau(array_AAPL_new, array_MSFT_new)
+
+##Visualization of Correlation##
+
+import matplotlib.pyplot as plt
+
+
+plt.style.use('ggplot')
+
+slope, intercept, r, p, stderr = scipy.stats.linregress(array_AAPL_new, array_AAL_new)
+
+line = f'Regression line: y={intercept:.2f}+{slope:.2f}x, r={r:.2f}'
+line
+
+fig, ax = plt.subplots()
+ax.plot(array_AAPL_new, array_AAL_new, linewidth=0, marker='s', label='Data points')
+ax.plot(array_AAPL_new, intercept + slope * array_AAPL_new, label=line)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.legend(facecolor='white')
+plt.show()
+
+fig2, ax2 = plt.subplots()
+ax2.plot(array_AAPL_new, array_MSFT_new, linewidth=0, marker='s', label='Data points')
+ax2.plot(array_AAPL_new, intercept + slope * array_AAPL_new, label=line2)
+ax2.set_xlabel('x')
+ax2.set_ylabel('y')
+ax2.legend(facecolor='white')
+plt.show()
