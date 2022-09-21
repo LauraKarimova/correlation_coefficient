@@ -27,11 +27,20 @@ Data_CSV_2 = csv.reader(File_CSV_2)
 for row_aal in Data_CSV_2:
     for now_aal in row_aal:
         array_AAL.append(now_aal)
+        
+# Creation of an empty array array_PPC, and subsequent loading of data from a csv file ppc.csv (PPC stock price historical data).
+array_PPC = []
+File_CSV_3 = open('ppc.csv')
+Data_CSV_3 = csv.reader(File_CSV_3)
+for row_ppc in Data_CSV_3:
+    for now_ppc in row_ppc:
+        array_PPC.append(now_ppc)
 
 #Changing type of the arrays.
 array_AAPL_new = np.array(array_AAPL, dtype=np.float32)
 array_MSFT_new = np.array(array_MSFT, dtype=np.float32)
 array_AAL_new = np.array(array_AAL, dtype=np.float32)
+array_PPC_new = np.array(array_PPC, dtype=np.float32)
 
 #Using the corrcoef function of the library numpy, calculate the correlation coefficient between the two arrays array_AAPL_new and array_AAL_new.
 r = np.corrcoef(array_AAPL_new, array_AAL_new)
@@ -70,6 +79,21 @@ line
 #Building a scatterplot based on the value of the correlation coefficient.
 fig, ax = plt.subplots()
 ax.plot(array_AAPL_new, array_AAL_new, linewidth=0, marker='s', label='Data points')
+ax.plot(array_AAPL_new, intercept + slope * array_AAPL_new, label=line)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.legend(facecolor='white')
+plt.show()
+
+#Building the regression line using matplotlib library (no linear relationship of assets).
+plt.style.use('ggplot')
+slope, intercept, r, p, stderr = scipy.stats.linregress(array_AAPL_new, array_PPC_new)
+line = f'Regression line: y={intercept:.2f}+{slope:.2f}x, r={r:.2f}'
+line
+
+#Building a scatterplot based on the value of the correlation coefficient.
+fig, ax = plt.subplots()
+ax.plot(array_AAPL_new, array_PPC_new, linewidth=0, marker='s', label='Data points')
 ax.plot(array_AAPL_new, intercept + slope * array_AAPL_new, label=line)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
