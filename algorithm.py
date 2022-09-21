@@ -55,6 +55,12 @@ scipy.stats.spearmanr(array_AAPL_new, array_AAL_new)
 # Kendall's tau
 scipy.stats.kendalltau(array_AAPL_new, array_AAL_new)
 
+#Using the corrcoef function of the library numpy, calculate the correlation coefficient between the two arrays array_AAPL_new and array_MSFT_new.
+r = np.corrcoef(array_AAPL_new, array_MSFT_new)
+
+#Using the corrcoef function of the library numpy, calculate the correlation coefficient between the two arrays array_AAPL_new and array_PPC_new.
+r = np.corrcoef(array_AAPL_new, array_PPC_new)
+
 #Building the regression line using matplotlib library (strong positive straight-line correlation of assets).
 plt.style.use('ggplot')
 slope, intercept, r, p, stderr = scipy.stats.linregress(array_AAPL_new, array_MSFT_new)
